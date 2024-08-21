@@ -1,0 +1,14 @@
+sales:
+  tools:
+    metadata:
+      CHNS:
+        type: chainsaw
+        brand: Stihl
+
+
+  tools-config:
+    chainsaw:
+      daily-charge: 1.49
+      weekday-charge: yes
+      weekend-charge: no
+      holiday-charge: yes
