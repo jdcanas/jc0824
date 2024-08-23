@@ -1,4 +1,4 @@
-package com.point_of_sale.config;
+package com.point_of_sale.checkout.config;
 
 import java.math.BigDecimal;
 

@@ -1,11 +1,12 @@
-package com.point_of_sale.controller;
+package com.point_of_sale.checkout.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
-import com.point_of_sale.dao.ToolDao;
-import com.point_of_sale.model.Chainsaw;
+import com.point_of_sale.calendar.config.HolidayConfig;
+import com.point_of_sale.checkout.dao.ToolDao;
+import com.point_of_sale.checkout.model.Chainsaw;
 
 @Controller
 public class CheckoutController implements CommandLineRunner {
@@ -14,11 +15,13 @@ public class CheckoutController implements CommandLineRunner {
     ToolDao dao;
     @Autowired
     Chainsaw chainsaw;
+    @Autowired
+    HolidayConfig holidays;
 
     @Override
     public void run(String... args) {
         // this.printHello();
-        this.printTools();
+        holidays.printStrings();
     }
 
     public void printHello() {

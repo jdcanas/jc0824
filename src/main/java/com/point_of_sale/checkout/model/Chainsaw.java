@@ -1,14 +1,14 @@
-package com.point_of_sale.model;
+package com.point_of_sale.checkout.model;
 
 import org.springframework.stereotype.Component;
 
-import com.point_of_sale.config.ChainsawToolConfig;
+import com.point_of_sale.checkout.config.ChainsawToolConfig;
 
 @Component
 public class Chainsaw extends BaseTool {
 
     public Chainsaw(ChainsawToolConfig config) {
-        this.toolConfig = config;
+        this.config = config;
     }
 
     @Override

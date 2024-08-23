@@ -8,7 +8,22 @@ sales:
 
   tools-config:
     chainsaw:
-      daily-charge: 1.49
+      daily-charge: "1.49"
       weekday-charge: yes
       weekend-charge: no
       holiday-charge: yes
+
+holiday-config:
+  base-holidays:
+    # in format MM-DD
+    closest-weekday:
+      - "07-04"
+    
+    #in format "nth week, day of week (0 = Sunday 7 = Satuday), month"
+    # i.e. "3,7,03" means The 3rd Saturday in March
+    nth-week-of-month:
+      - "1,2,09" # First monday in september
+
+    static-holidays:
+
+

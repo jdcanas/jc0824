@@ -1,4 +1,4 @@
-package com.point_of_sale.model;
+package com.point_of_sale.checkout.model;
 
 public record ToolMetadata(ToolType type, String brand) { 
     @Override

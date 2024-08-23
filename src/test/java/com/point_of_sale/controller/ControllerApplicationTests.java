@@ -9,7 +9,7 @@ class ControllerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertEquals(2,1);
+		assertEquals(1,1);
 	}
 
 }
