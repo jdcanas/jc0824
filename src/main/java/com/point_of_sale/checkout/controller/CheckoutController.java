@@ -21,7 +21,7 @@ public class CheckoutController implements CommandLineRunner {
     @Override
     public void run(String... args) {
         // this.printHello();
-        holidays.printStrings();
+        // holidays.printStrings();
     }
 
     public void printHello() {

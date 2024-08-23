@@ -19,7 +19,7 @@ holiday-config:
     closest-weekday:
       - "07-04"
     
-    #in format "nth week, day of week (0 = Sunday 7 = Satuday), month"
+    #in format "nth week, day of week (1 = Sunday 7 = Satuday), month"
     # i.e. "3,7,03" means The 3rd Saturday in March
     nth-week-of-month:
       - "1,2,09" # First monday in september

@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "holiday-config.base-holidays")
-public class NthWeekHolidaysConfig {
-    private List<String> nthWeekOfMonth;
-
-    public void setNthWeekOfMonth(List<String> nthDayOfMonth) {
-        this.nthWeekOfMonth = nthDayOfMonth;
-    }
-
-    public List<String> getNthWeekOfMonth() {
-        return this.nthWeekOfMonth;
-    }
+public class ClosestWeekdayHolidaysConfig {
+    private List<String> closestWeekday;
     
+    public List<String> getClosestWeekday() {
+        return closestWeekday;
+    }
+
+    public void setClosestWeekday(List<String> closestWeekday) {
+        this.closestWeekday = closestWeekday;
+    }
 }

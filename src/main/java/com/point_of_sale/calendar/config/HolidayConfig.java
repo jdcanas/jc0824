@@ -17,7 +17,7 @@ public class HolidayConfig {
     @Autowired
     private NthWeekHolidaysConfig nthWeekHolidaysConfig;
     @SuppressWarnings("unused")
-    private List<String> closestWeekday;
+
     private List<String> staticHolidays;
 
     // public void printStrings() {
