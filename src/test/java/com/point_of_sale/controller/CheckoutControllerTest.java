@@ -126,7 +126,7 @@ public class CheckoutControllerTest {
         assertEquals(4, agreement.getRentalDays().rentalDays());
         assertEquals(1, agreement.getRentalDays().chargeDays());
         assertEquals(UserRentalAgreementInput.convert("07-02-2020"), agreement.getRentalDays().checkoutDate());
-        assertEquals(UserRentalAgreementInput.convert("07-06-20"), agreement.getRentalDays().checkoutDate().plusDays(agreement.getRentalDays().rentalDays()));
+        assertEquals(UserRentalAgreementInput.convert("07-06-2020"), agreement.getRentalDays().checkoutDate().plusDays(agreement.getRentalDays().rentalDays()));
         assertEquals(new BigDecimal("2.99"), agreement.getPrice().originalPrice());
         assertEquals(new BigDecimal("1.49"), agreement.getPrice().finalPrice());
         assertEquals(50, agreement.getPrice().discountPercent());
