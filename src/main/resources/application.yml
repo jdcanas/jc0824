@@ -1,0 +1,56 @@
+sales:
+  tools:
+    metadata:
+      CHNS:
+        type: chainsaw
+        brand: Stihl
+      LADW:
+        type: ladder
+        brand: Werner
+      JAKD:
+        type: jackhammer
+        brand: DeWalt
+      JAKR:
+        type: jackhammer
+        brand: Ridgid
+
+
+  tools-config:
+    chainsaw:
+      daily-charge: "1.49"
+      weekday-charge: yes
+      weekend-charge: no
+      holiday-charge: yes
+    ladder:
+      daily-charge: "1.99"
+      weekday-charge: yes
+      weekend-charge: yes
+      holiday-charge: no
+    jackhammer:
+      daily-charge: "2.99"
+      weekday-charge: yes
+      weekend-charge: no
+      holiday-charge: no
+
+holiday-config:
+  base-holidays:
+    # in format MM-DD
+    closest-weekday:
+      - "07-04"
+    
+    #in format "nth week, day of week (1 = Sunday 7 = Satuday), month"
+    # i.e. "3,7,03" means The 3rd Saturday in March
+    nth-week-of-month:
+      - "1,2,09" # First monday in september
+
+    static-holidays:
+
+user-input:
+  # must be a valid tool code, specified in sales.tools.metadata section of config as the keys for the map
+  tool-code: CHNS
+  # must be greater than 0
+  rental-day-count: 5
+  # must be between [0,100]
+  discount-percent: 20
+  # mm-dd-yyyy format
+  input-date: 04-25-2022
