@@ -20,7 +20,7 @@ public class CalendarService {
     private HolidayService holidayService;
 
     public RentalDays getChargeDays(LocalDate checkoutDate, Integer numDays, ITool tool) {
-          // calculate list of days between (checkout day + num days], exclusive of checkout day inclusive of final day
+        // Calculate list of days between (checkout day + num days], exclusive of checkout day inclusive of final day
         List<LocalDate> remainingChargeDays = getAllDays(checkoutDate, numDays);
 
         if (!tool.getHolidayCharge()) {
@@ -28,12 +28,12 @@ public class CalendarService {
         }
         if (!tool.getWeekdayCharge()) {
             remainingChargeDays = remainingChargeDays.stream()
-                .filter(day -> isWeekend(day))
+                .filter(day -> !isWeekday(day))
                 .collect(Collectors.toList());
         }
         if (!tool.getWeekendCharge()) {
             remainingChargeDays = remainingChargeDays.stream()
-                .filter(day -> isWeekday(day))
+                .filter(day -> !isWeekend(day))
                 .collect(Collectors.toList());
         }
 
