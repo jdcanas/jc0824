@@ -1,7 +1,5 @@
 package com.point_of_sale.checkout.controller;
 
-import java.awt.im.InputContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
@@ -10,8 +8,8 @@ import com.point_of_sale.calendar.model.RentalDays;
 import com.point_of_sale.calendar.service.CalendarService;
 import com.point_of_sale.checkout.dao.ToolDao;
 import com.point_of_sale.checkout.dao.ToolMetadataDao;
-import com.point_of_sale.checkout.model.Chainsaw;
 import com.point_of_sale.checkout.model.ITool;
+import com.point_of_sale.checkout.model.RentalAgreement;
 import com.point_of_sale.checkout.model.ToolMetadata;
 import com.point_of_sale.checkout.model.UserRentalAgreementInput;
 import com.point_of_sale.cost.model.DiscountedPrice;
@@ -33,21 +31,19 @@ public class CheckoutController implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        ToolMetadata toolMetadata = toolMetadataDao.findMetadata(userInput.toolCode());
+        RentalAgreement agreement = getAgreement(userInput);
+        agreement.print();
+    }
+
+    public RentalAgreement getAgreement(UserRentalAgreementInput input) {
+        ToolMetadata toolMetadata = toolMetadataDao.findMetadata(input.toolCode());
         ITool tool = toolDao.getTool(toolMetadata.type());
 
-        RentalDays rentalDays = calendarService.getChargeDays(userInput.checkoutDate(), userInput.rentalDayCount(), tool);
-        DiscountedPrice price = costService.getCostAndDiscount(tool.getDailyCharge(), rentalDays.chargeDays(), userInput.discountPercent());
+        RentalDays rentalDays = calendarService.getChargeDays(input.checkoutDate(), input.rentalDayCount(), tool);
+        DiscountedPrice price = costService.getCostAndDiscount(tool.getDailyCharge(), rentalDays.chargeDays(), input.discountPercent());
 
 
-        // this.printHello();
-        // holidays.printStrings();
+        RentalAgreement agreement = new RentalAgreement(input.toolCode(), tool, toolMetadata, rentalDays, price);
+        return agreement;
     }
-
-    public void printHello() {
-        System.out.println("hello!");
-    }
-
-
-    
 }

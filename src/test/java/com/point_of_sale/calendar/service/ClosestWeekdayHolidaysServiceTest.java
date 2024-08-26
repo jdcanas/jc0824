@@ -35,7 +35,6 @@ public class ClosestWeekdayHolidaysServiceTest {
         LocalDate date = new LocalDate(2020, 7, 3);
 
         assertEquals(1, dates.size());
-        System.out.println(dates.getFirst());
         assertTrue(dates.contains(date));
     }
 

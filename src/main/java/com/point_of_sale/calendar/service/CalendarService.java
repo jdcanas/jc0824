@@ -1,13 +1,9 @@
 package com.point_of_sale.calendar.service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import org.joda.time.DateTimeConstants;
 
 import static org.joda.time.DateTimeConstants.SATURDAY;
 import static org.joda.time.DateTimeConstants.SUNDAY;
@@ -32,12 +28,12 @@ public class CalendarService {
         }
         if (!tool.getWeekdayCharge()) {
             remainingChargeDays = remainingChargeDays.stream()
-                .filter(day -> isWeekday(day))
+                .filter(day -> isWeekend(day))
                 .collect(Collectors.toList());
         }
         if (!tool.getWeekendCharge()) {
             remainingChargeDays = remainingChargeDays.stream()
-                .filter(day -> isWeekend(day))
+                .filter(day -> isWeekday(day))
                 .collect(Collectors.toList());
         }
 
@@ -53,7 +49,7 @@ public class CalendarService {
 
         while (daysRemaining > 0) {
             //We do not include checkout day
-            currentDay = checkoutDate.plusDays(1);
+            currentDay = currentDay.plusDays(1);
             days.add(currentDay);
             daysRemaining--;
         }
@@ -73,14 +69,15 @@ public class CalendarService {
 
         // Filter the days based on whether any of them are holidays
         List<LocalDate> filteredDays = days.stream()
-            .filter(day -> holidays.contains(day))
+            .filter(day -> !holidays.contains(day))
             .collect(Collectors.toList());
 
         return filteredDays;
     }
 
     public Boolean isWeekend(LocalDate day) {
-        return day.getDayOfWeek() == SUNDAY || day.getDayOfWeek() == SATURDAY;
+        Boolean isWeekend = day.getDayOfWeek() == SUNDAY || day.getDayOfWeek() == SATURDAY;
+        return isWeekend;
     }
 
     public Boolean isWeekday(LocalDate day) {

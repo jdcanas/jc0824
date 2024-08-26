@@ -36,10 +36,10 @@ public class NthWeekHolidaysService implements IHolidayService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getDefault());
         calendar.set(Calendar.DAY_OF_WEEK, nthWeekOfMonth.weekday());
-        calendar.set(Calendar.WEEK_OF_MONTH, nthWeekOfMonth.nthWeek());
+        calendar.set(Calendar.DAY_OF_WEEK_IN_MONTH, nthWeekOfMonth.nthWeek());
         calendar.set(Calendar.MONTH, nthWeekOfMonth.month());
         calendar.set(Calendar.YEAR, year);
-    
+
         LocalDate localDate = LocalDate.fromCalendarFields(calendar);
         return localDate;
     }

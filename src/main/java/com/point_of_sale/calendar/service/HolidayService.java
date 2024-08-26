@@ -7,8 +7,6 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.point_of_sale.checkout.model.ITool;
-
 @Service
 public class HolidayService {
     @Autowired

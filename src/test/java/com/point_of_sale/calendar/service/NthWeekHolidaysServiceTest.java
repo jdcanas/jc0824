@@ -16,9 +16,18 @@ public class NthWeekHolidaysServiceTest {
     NthWeekHolidaysService service;
 
     @Test
-    public void testNthWeekHolidaySeryvice_1year() {
+    public void testNthWeekHolidayService_1year() {
         List<LocalDate> dates = service.getHolidays(2024);
         LocalDate date = new LocalDate(2024, 9, 2);
+
+        assertEquals(1, dates.size());
+        assertTrue(dates.contains(date));
+    }
+
+    @Test
+    public void testNthWeekHolidayService_2020() {
+        List<LocalDate> dates = service.getHolidays(2020);
+        LocalDate date = new LocalDate(2020, 9, 7);
 
         assertEquals(1, dates.size());
         assertTrue(dates.contains(date));

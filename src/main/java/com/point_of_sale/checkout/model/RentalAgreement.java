@@ -18,11 +18,35 @@ public class RentalAgreement {
         this.price = price;
     }
 
-    public void printAgreement() {
+    public void print() {
+        System.out.println("\n\n");
+        System.out.println("==== Rental Agreement ====");
         System.out.println("Tool code: " + toolCode);
         System.out.println("Tool type: " + tool.getType());
         System.out.println("Tool brand: " + metadata.brand());
         rentalDays.print();
         price.print();
+        System.out.println("== End Rental Agreement ==");
+        System.out.println("\n\n");
+    }
+
+    public String getToolCode() {
+        return toolCode;
+    }
+
+    public ITool getTool() {
+        return tool;
+    }
+
+    public ToolMetadata getMetadata() {
+        return metadata;
+    }
+
+    public RentalDays getRentalDays() {
+        return rentalDays;
+    }
+
+    public DiscountedPrice getPrice() {
+        return price;
     }
 }
