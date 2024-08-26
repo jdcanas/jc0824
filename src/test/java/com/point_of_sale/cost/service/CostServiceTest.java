@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.point_of_sale.cost.model.DiscountedPrice;
-import com.point_of_sale.cost.service.CostService;
 
 @SpringBootTest
 public class CostServiceTest {
@@ -36,7 +35,7 @@ public class CostServiceTest {
         DiscountedPrice discountObj = costService.applyDiscount(originalPrice, 30);
 
         assertEquals(new BigDecimal(".45"), discountObj.discountAmount());
-        assertEquals(new BigDecimal("1.04"), discountObj.newPrice());
+        assertEquals(new BigDecimal("1.04"), discountObj.finalPrice());
         assertEquals(30, discountObj.discountPercent());
         assertEquals(originalPrice, discountObj.originalPrice());
     }
@@ -48,7 +47,7 @@ public class CostServiceTest {
         DiscountedPrice discountObj = costService.applyDiscount(originalPrice, 29);
 
         assertEquals(new BigDecimal(".43"), discountObj.discountAmount());
-        assertEquals(new BigDecimal("1.06"), discountObj.newPrice());
+        assertEquals(new BigDecimal("1.06"), discountObj.finalPrice());
         assertEquals(29, discountObj.discountPercent());
         assertEquals(originalPrice, discountObj.originalPrice());
     }

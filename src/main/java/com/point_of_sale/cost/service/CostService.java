@@ -5,14 +5,19 @@ import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
-import com.point_of_sale.checkout.model.ITool;
 import com.point_of_sale.cost.model.DiscountedPrice;
 
 @Service
 public class CostService {
 
-    public BigDecimal getCost(BigDecimal cost, Integer numRentalDays) {
-        BigDecimal unroundedCharge = cost.multiply(BigDecimal.valueOf(numRentalDays));
+    public DiscountedPrice getCostAndDiscount(BigDecimal costPerDay, Integer chargeDays, Integer discountPercent) {
+        BigDecimal initialCost = getCost(costPerDay, chargeDays);
+        DiscountedPrice price = applyDiscount(initialCost, discountPercent);
+        return price;
+    }
+
+    public BigDecimal getCost(BigDecimal costPerDay, Integer chargeDays) {
+        BigDecimal unroundedCharge = costPerDay.multiply(BigDecimal.valueOf(chargeDays));
 
         return unroundedCharge;
     }

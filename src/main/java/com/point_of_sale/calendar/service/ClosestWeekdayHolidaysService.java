@@ -1,12 +1,13 @@
 package com.point_of_sale.calendar.service;
 
-import java.time.DayOfWeek;
+import static org.joda.time.DateTimeConstants.SATURDAY;
+import static org.joda.time.DateTimeConstants.SUNDAY;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,9 +40,9 @@ public class ClosestWeekdayHolidaysService implements IHolidayService {
         calendar.set(Calendar.YEAR, year);
         LocalDate unadjustedDate = LocalDate.fromCalendarFields(calendar);
         // Adjust to nearest weekday
-        if (unadjustedDate.getDayOfWeek() ==  6) {
+        if (unadjustedDate.getDayOfWeek() ==  SATURDAY) {
             return unadjustedDate.minusDays(1);
-        } else if (unadjustedDate.getDayOfWeek() == 7) {
+        } else if (unadjustedDate.getDayOfWeek() == SUNDAY) {
             return unadjustedDate.plusDays(1);
         } else {
             return unadjustedDate;

@@ -4,6 +4,15 @@ sales:
       CHNS:
         type: chainsaw
         brand: Stihl
+      LADW:
+        type: ladder
+        brand: Werner
+      JAKD:
+        type: jackhammer
+        brand: DeWalt
+      JAKR:
+        type: jackhammer
+        brand: Ridgid
 
 
   tools-config:
@@ -12,6 +21,16 @@ sales:
       weekday-charge: yes
       weekend-charge: no
       holiday-charge: yes
+    ladder:
+      daily-charge: "1.99"
+      weekday-charge: yes
+      weekend-charge: yes
+      holiday-charge: no
+    jackhammer:
+      daily-charge: "2.99"
+      weekday-charge: yes
+      weekend-charge: no
+      holiday-charge: no
 
 holiday-config:
   base-holidays:
@@ -25,5 +44,13 @@ holiday-config:
       - "1,2,09" # First monday in september
 
     static-holidays:
+
+user-input:
+  tool-code: CHNS
+  rental-day-count: 5
+  discount-percent: 20
+  # mm-dd-yyyy
+  checkout-date: 04-20-2022
+
 
 
