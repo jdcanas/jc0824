@@ -16,4 +16,4 @@ The user input is provided in the `input` section of `application.yml`
 # Tests
 Tests can be run via `./gradlew test`. Note that this will intelligently compile and only run tests that could have been altered by most recent changes. 
 
-The main test cases asked for can be found numbered appropriatelt in `CheckoutControllerTest.java`.
+The main test cases asked for can be found numbered appropriately in `CheckoutControllerTest.java`.
